@@ -1,0 +1,23 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xingen.systemdonwload">
+
+
+    //8.0安装未知来源的权限
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"></uses-permission>
+    // DownloadManager.Request setNotificationVisibility(): Notification不显示的权限
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"></uses-permission>
+
+    <application>
+        <provider
+            android:name="com.xingen.systemdonwload.install.DownloadFileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/download_file_paths" />
+        </provider>
+
+    </application>
+
+</manifest>
