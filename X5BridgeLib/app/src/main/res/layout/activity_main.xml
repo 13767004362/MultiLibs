@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/main_single_bridge_web_view_btn"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="单例预加载的BridgeWebView"
+        android:textColor="@android:color/white" />
+    <TextView
+        android:id="@+id/main_x5_bridge_web_view_btn"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="与X5集成的BridgeWebView"
+        android:textColor="@android:color/white" />
+
+
+</LinearLayout>

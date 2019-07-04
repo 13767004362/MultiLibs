@@ -1,0 +1,83 @@
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>
+        js调用java
+    </title>
+</head>
+<body>
+<p>
+    <xmp id="show">
+    </xmp>
+</p>
+<p>
+    <input type="button" value="调用Native方法" onclick="invokeNative();" />
+</p>
+</body>
+<script>
+    function setupJsBridgeForIOS(callback) {
+        if (window.WebViewJavascriptBridge) {
+            return callback(WebViewJavascriptBridge);
+        }
+        if (window.WVJBCallbacks) {
+            return window.WVJBCallbacks.push(callback);
+        }
+        window.WVJBCallbacks = [callback];
+        var WVJBIframe = document.createElement('iframe');
+        WVJBIframe.style.display = 'none';
+        WVJBIframe.src = 'https://__bridge_loaded__';
+        document.documentElement.appendChild(WVJBIframe);
+        setTimeout(function () {
+            document.documentElement.removeChild(WVJBIframe)
+        }, 0)
+    }
+    function setupJsBridgeForAndroid(callback) {
+        if (window.WebViewJavascriptBridge) {
+            callback(WebViewJavascriptBridge)
+        } else {
+            document.addEventListener(
+                'WebViewJavascriptBridgeReady',
+                function () {
+                    callback(WebViewJavascriptBridge)
+                },
+                false
+            );
+        }
+    }
+
+    function isIphone() {
+        var ua = navigator.userAgent.toLowerCase();
+        var isIph = ua.indexOf("iphone") > -1;
+        if (isIph) {
+            return true;
+        }
+        return false;
+    }
+    var setupJsBridge = isIphone() ? setupJsBridgeForIOS : setupJsBridgeForAndroid;
+    setupJsBridge(function (bridge) {
+
+        bridge.registerHandler("functionInJs", function (data, responseCallback) {
+            document.getElementById("show").innerHTML = ("data from Java: = " + data);
+            if (responseCallback) {
+                var responseData = "Javascript Says Right back aka!";
+                responseCallback(responseData);
+            }
+        });
+    });
+
+
+
+
+    function invokeNative() {
+        //call native method
+        window.WebViewJavascriptBridge.callHandler(
+            'submitFromWeb', {
+                'param': 'X5BridgeLib测试'
+            },
+            function (responseData) {
+                document.getElementById("show").innerHTML = "native 响应,  = " + responseData;
+            }
+        );
+    }
+</script>
+</html>
