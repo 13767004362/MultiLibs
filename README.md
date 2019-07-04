@@ -7,7 +7,7 @@
 **当前项目中若干库的介绍**：
 
 | 库名 | 介绍 |
-|:-------------:|:-------------:|
+|:-------------|:-------------|
 | [PhotoCropLib](https://github.com/13767004362/MultiLibs/tree/master/PhotoCropLib) | 调用android 系统自带的功能，实现拍照，图库，裁剪 |
 | [SystemDownlaod](https://github.com/13767004362/MultiLibs/tree/master/SystemDownlaod) | 通过Android系统自带的DownloadManager，实现下载，进度查询，取消任务 | 
 | [SystemNotificationLib](https://github.com/13767004362/MultiLibs/tree/master/SystemNotificationLib) | 处理android版本差异和国产ROM中Notification问题 |
