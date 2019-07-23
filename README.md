@@ -4,6 +4,8 @@
 >开发应用层中，遇到若干问题，从而编写一些Android应用层常用的类库。
 
 
+如何发布类库，请阅读[AndroidStudio 发布开源库Library到jcenter](https://blog.csdn.net/hexingen/article/details/84637089)。
+
 **当前项目中若干库的介绍**：
 
 | 库名 | 介绍 |
